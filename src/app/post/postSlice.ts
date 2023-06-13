@@ -39,7 +39,7 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
       providesTags: (result:any) => {
         return [
           { type: "Post", id: "LIST" },
-          ...result.ids.map((id:string) => ({ type: "Post", id })),
+          ...result?.ids?.map((id:string) => ({ type: "Post", id })),
         ];
         
       },
@@ -64,7 +64,7 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         return postsAdapter.setAll(initialState, loadedPosts);
       },
       providesTags: (result:any, error, arg) => [
-        ...result.ids.map((id:string) => ({ type: "Post", id })),
+        ...result?.ids?.map((id:string) => ({ type: "Post", id })),
       ],
     }),
     addNewPost: builder.mutation({
